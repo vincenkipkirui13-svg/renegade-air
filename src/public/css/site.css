@@ -548,3 +548,153 @@ img{
     object-fit:cover!important;
   }
 }
+/* ============================================================
+   RENEGADE AIR — DIRECT VISUAL OVERRIDE
+   ============================================================ */
+
+/* HERO — photograph only, no blue gradient/background overlays */
+.hero{
+  position:relative!important;
+  background:transparent!important;
+  overflow:hidden!important;
+}
+
+.hero::before,
+.hero::after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+}
+
+.hero-media{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  display:block!important;
+  background:transparent!important;
+  z-index:0!important;
+}
+
+.hero-media .hero-image,
+.hero-image{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  background:transparent!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+}
+
+.hero-content{
+  position:relative!important;
+  z-index:2!important;
+}
+
+/* TRAVEL HIGHLIGHTS — photos completely fill their photo area */
+.highlight-photo{
+  position:relative!important;
+  width:100%!important;
+  height:100%!important;
+  min-width:0!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  display:block!important;
+  padding:0!important;
+  background:#fff!important;
+}
+
+.highlight-photo img,
+.highlight-photo .contain{
+  position:absolute!important;
+  inset:0!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  min-width:0!important;
+  min-height:0!important;
+  margin:0!important;
+  padding:0!important;
+  border:0!important;
+  object-fit:cover!important;
+  object-position:center center!important;
+}
+
+.highlight-photo::before,
+.highlight-photo::after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+}
+
+.highlight-badge{
+  position:absolute!important;
+  z-index:10!important;
+}
+
+/* REVIEWS — remove the large strange quotation mark in every card */
+.review-card::before,
+.review-card::after{
+  content:none!important;
+  display:none!important;
+  background:none!important;
+}
+
+@media(max-width:720px){
+
+  .hero{
+    min-height:575px!important;
+    background:transparent!important;
+  }
+
+  .hero-media{
+    inset:0!important;
+  }
+
+  .hero-image,
+  .hero-media .hero-image{
+    object-fit:cover!important;
+    object-position:center center!important;
+  }
+
+  .highlight-card,
+  .highlight-featured{
+    min-width:0!important;
+    overflow:hidden!important;
+  }
+
+  .highlight-photo{
+    width:100%!important;
+    height:100%!important;
+    min-height:190px!important;
+    padding:0!important;
+  }
+
+  .highlight-featured .highlight-photo{
+    min-height:210px!important;
+  }
+
+  .highlight-photo img,
+  .highlight-photo .contain{
+    width:100%!important;
+    height:100%!important;
+    padding:0!important;
+    object-fit:cover!important;
+    object-position:center center!important;
+  }
+
+  .review-card::before,
+  .review-card::after{
+    content:none!important;
+    display:none!important;
+  }
+}
