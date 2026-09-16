@@ -1,0 +1,247 @@
+{
+  "settings": {
+    "companyName": "RENEGADE AIR",
+    "tagline": "Fly More. Travel Smarter.",
+    "slogan": "Your Journey, Our Commitment.",
+    "phone": "0738 021 474",
+    "whatsapp": "254738021474",
+    "email": "",
+    "address": "",
+    "heroTitle": "FLY MORE. TRAVEL SMARTER.",
+    "heroText": "Affordable air travel to selected destinations across Kenya.",
+    "heroImage": "/uploads/1789559509192-552b5c40.jpg",
+    "logo": "/uploads/1789558174126-ca684a16.jpg",
+    "favicon": "/uploads/1789558174129-f8391ef0.jpg",
+    "aboutTitle": "Your Journey, Our Commitment.",
+    "aboutText": "Renegade Air connects travelers to selected destinations across Kenya with a simple, customer-focused booking experience.",
+    "reviewCount": "7544",
+    "reviewCountIsDemo": false,
+    "showFleet": true,
+    "showGallery": true,
+    "showReviews": true
+  },
+  "destinations": [
+    {
+      "id": 1789547643118,
+      "name": "Eldoret",
+      "fare": 5500,
+      "active": true,
+      "sort": 0
+    },
+    {
+      "id": 1789547643119,
+      "name": "Kisumu",
+      "fare": 6500,
+      "active": true,
+      "sort": 1
+    },
+    {
+      "id": 1789547643120,
+      "name": "Mombasa",
+      "fare": 6500,
+      "active": true,
+      "sort": 2
+    },
+    {
+      "id": 1789547643121,
+      "name": "Kitale",
+      "fare": 7000,
+      "active": true,
+      "sort": 3
+    },
+    {
+      "id": 1789547643122,
+      "name": "Homa Bay",
+      "fare": 7800,
+      "active": true,
+      "sort": 4
+    },
+    {
+      "id": 1789547643123,
+      "name": "Wajir",
+      "fare": 9000,
+      "active": true,
+      "sort": 5
+    },
+    {
+      "id": 1789547643124,
+      "name": "Maasai Mara",
+      "fare": 10000,
+      "active": true,
+      "sort": 6
+    }
+  ],
+  "gallery": [
+    {
+      "id": 1789558467857,
+      "active": true,
+      "title": "Modern Air Transport",
+      "category": "General",
+      "description": "Reliable air transportation with a focus on comfort, convenience, and an exceptional travel experience.",
+      "image": "/uploads/1789558467580-2e4243aa.jpg"
+    },
+    {
+      "id": 1789558575263,
+      "active": true,
+      "title": "Scenic Aerial Journey",
+      "category": "General",
+      "description": "Enjoy breathtaking views from above as we take you closer to your destination in comfort and style.",
+      "image": "/uploads/1789558575111-4e398eed.jpg"
+    },
+    {
+      "id": 1789558819869,
+      "active": true,
+      "title": "Modern Air Transport",
+      "category": "General",
+      "description": "Reliable air transportation with a focus on comfort, convenience, and an exceptional travel experience.",
+      "image": "/uploads/1789558819286-83658bb5.jpg"
+    },
+    {
+      "id": 1789559353985,
+      "active": true,
+      "title": "Beautiful Destination Views",
+      "category": "General",
+      "description": "Discover stunning landscapes and unforgettable views as you travel to your next destination.",
+      "image": "/uploads/1789559419551-6e2522f3.jpg"
+    }
+  ],
+  "fleet": [],
+  "reviews": [
+    {
+      "id": 1789547643218,
+      "name": "Mark Otieno",
+      "note": "Easy booking and helpful communication.",
+      "rating": 5,
+      "image": "",
+      "active": true,
+      "isDemo": false
+    },
+    {
+      "id": 1789547643219,
+      "name": "Kelvin Kiplangat",
+      "note": "A smooth way to plan my trip.",
+      "rating": 5,
+      "image": "",
+      "active": true,
+      "isDemo": false
+    },
+    {
+      "id": 1789547643220,
+      "name": "Brian Mwangi",
+      "note": "Clear travel information and a simple inquiry process.",
+      "rating": 5,
+      "image": "",
+      "active": true,
+      "isDemo": false
+    },
+    {
+      "id": 1789547643221,
+      "name": "Faith Wanjiku",
+      "note": "I found the booking details easy to follow.",
+      "rating": 5,
+      "image": "",
+      "active": true,
+      "isDemo": false
+    },
+    {
+      "id": 1789547643222,
+      "name": "Kevin Omondi",
+      "note": "Quick contact options made the process convenient.",
+      "rating": 4,
+      "image": "",
+      "active": true,
+      "isDemo": false
+    },
+    {
+      "id": 1789547643223,
+      "name": "Sharon Chebet",
+      "note": "The destination and fare information was clear.",
+      "rating": 5,
+      "image": "",
+      "active": true,
+      "isDemo": false
+    },
+    {
+      "id": 1789547643224,
+      "name": "Daniel Kiplagat",
+      "note": "A straightforward travel booking experience.",
+      "rating": 5,
+      "image": "",
+      "active": true,
+      "isDemo": false
+    },
+    {
+      "id": 1789547643225,
+      "name": "Mercy Achieng",
+      "note": "Easy to navigate and find what I needed.",
+      "rating": 4,
+      "image": "",
+      "active": true,
+      "isDemo": false
+    },
+    {
+      "id": 1789547643226,
+      "name": "Peter Kamau",
+      "note": "The booking request was simple to submit.",
+      "rating": 5,
+      "image": "",
+      "active": true,
+      "isDemo": false
+    },
+    {
+      "id": 1789547643227,
+      "name": "Ann Njeri",
+      "note": "Convenient contact through WhatsApp.",
+      "rating": 5,
+      "image": "",
+      "active": true,
+      "isDemo": false
+    },
+    {
+      "id": 1789547643228,
+      "name": "Collins Kiptoo",
+      "note": "The information was presented clearly.",
+      "rating": 5,
+      "image": "",
+      "active": true,
+      "isDemo": false
+    },
+    {
+      "id": 1789547643229,
+      "name": "Linet Jepchirchir",
+      "note": "A clean and easy way to start a trip inquiry.",
+      "rating": 4,
+      "image": "",
+      "active": true,
+      "isDemo": false
+    },
+    {
+      "id": 1789547643230,
+      "name": "Samuel Kariuki",
+      "note": "I could quickly find the destination fare.",
+      "rating": 5,
+      "image": "",
+      "active": true,
+      "isDemo": false
+    },
+    {
+      "id": 1789547643231,
+      "name": "Jane Wambui",
+      "note": "Simple, clear and convenient to use.",
+      "rating": 5,
+      "image": "",
+      "active": true,
+      "isDemo": false
+    },
+    {
+      "id": 1789547643232,
+      "name": "Victor Ochieng",
+      "note": "Helpful travel information in one place.",
+      "rating": 5,
+      "image": "",
+      "active": true,
+      "isDemo": false
+    }
+  ],
+  "inquiries": []
+}
