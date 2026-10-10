@@ -1687,3 +1687,13 @@ section#destinations .destination-cards > article.destination-photo-card{
 @keyframes renegade-brand-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.brand-marquee-track{animation:none}.brand-marquee{mask-image:none}.brand-marquee-track>span[aria-hidden=true]{display:none}}
 @media(max-width:720px){.brand-copy{max-width:min(48vw,210px)}.brand-marquee{margin-top:4px}.brand-marquee-track>span{font-size:8px}.nav-wrap{gap:10px}}
+
+
+/* Slim full-screen marquee on its own line below the complete header row */
+.brand-copy{max-width:none!important}
+.brand-copy .brand-marquee{display:none!important}
+.brand-marquee-wide{display:flex!important;align-items:center;width:100%;height:23px;overflow:hidden;margin:0;padding:0 0 1px;border-top:1px solid rgba(217,231,245,.55);background:rgba(247,250,254,.72);white-space:nowrap;mask-image:linear-gradient(90deg,transparent,#000 2%,#000 98%,transparent)}
+.brand-marquee-wide .brand-marquee-track{display:flex;flex:0 0 auto;width:max-content;animation:renegade-brand-scroll 28s linear infinite;will-change:transform}
+.brand-marquee-wide .brand-marquee-track>span{display:block;flex:0 0 auto;padding-right:7vw;color:#47627e;font-size:11px;font-weight:500;letter-spacing:.085em;line-height:1.2}
+@media(max-width:720px){.brand-marquee-wide{height:22px}.brand-marquee-wide .brand-marquee-track>span{font-size:10px;letter-spacing:.07em}.nav-wrap{gap:10px}}
+@media(prefers-reduced-motion:reduce){.brand-marquee-wide .brand-marquee-track{animation:none}.brand-marquee-wide{mask-image:none}.brand-marquee-wide .brand-marquee-track>span[aria-hidden=true]{display:none}}
