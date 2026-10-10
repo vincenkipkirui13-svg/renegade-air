@@ -1,6 +1,7 @@
 const menuBtn=document.querySelector('[data-menu]');const nav=document.querySelector('[data-nav]');
 if(menuBtn&&nav){menuBtn.setAttribute('aria-expanded','false');menuBtn.setAttribute('aria-label','Open navigation menu');menuBtn.addEventListener('click',()=>{const open=nav.classList.toggle('open');menuBtn.setAttribute('aria-expanded',String(open));menuBtn.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu')});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuBtn.setAttribute('aria-expanded','false')}))}
 document.querySelectorAll('[data-destination]').forEach(a=>a.addEventListener('click',()=>{const s=document.querySelector('select[name="destination"]');if(s)s.value=a.dataset.destination}));
+const requestedDestination=new URLSearchParams(window.location.search).get('destination');const destinationSelect=document.querySelector('select[name="destination"]');if(destinationSelect&&requestedDestination)destinationSelect.value=requestedDestination;
 const depart=document.querySelector('[data-depart-date]');const tripType=document.querySelector('[data-trip-type]');const returnDate=document.querySelector('[data-return-date]');
 const now=new Date();const localToday=new Date(now.getTime()-now.getTimezoneOffset()*60000).toISOString().slice(0,10);
 if(depart){depart.min=localToday;depart.addEventListener('change',()=>{if(returnDate){returnDate.min=depart.value||localToday;if(returnDate.value&&returnDate.value<returnDate.min)returnDate.value=''}})}
