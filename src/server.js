@@ -42,14 +42,14 @@ const DESTINATION_DESCRIPTIONS = {
   'Maasai Mara': 'Get closer to Kenya’s celebrated wildlife reserve and safari plains.'
 };
 const DESTINATION_PHOTOS = {
-  'Eldoret': 'https://flyrenegadeairlines.org/__l5e/assets-v1/55daf08f-6449-4bb7-9dba-87937679397f/hero-aircraft.webp',
-  'Kisumu': 'https://flyrenegadeairlines.org/__l5e/assets-v1/73192212-2347-4f08-b726-2d8d537fe6c6/atr-runway.webp',
-  'Mombasa': 'https://flyrenegadeairlines.org/__l5e/assets-v1/890f2336-8a2b-4f68-9988-92671497f48c/passenger-boarding.webp',
-  'Malindi': 'https://flyrenegadeairlines.org/__l5e/assets-v1/02c0de59-dc24-4a58-8809-ce7ce654e8dd/atr-landing.webp',
-  'Kitale': 'https://flyrenegadeairlines.org/__l5e/assets-v1/7a1bd12e-08e5-4a94-8342-01c4ba83e065/runway-arrival.webp',
-  'Homa Bay': 'https://flyrenegadeairlines.org/__l5e/assets-v1/73192212-2347-4f08-b726-2d8d537fe6c6/atr-runway.webp',
-  'Wajir': 'https://flyrenegadeairlines.org/__l5e/assets-v1/02c0de59-dc24-4a58-8809-ce7ce654e8dd/atr-landing.webp',
-  'Maasai Mara': 'https://flyrenegadeairlines.org/__l5e/assets-v1/890f2336-8a2b-4f68-9988-92671497f48c/passenger-boarding.webp'
+  'Eldoret': 'https://commons.wikimedia.org/wiki/Special:FilePath/Skyline_of_Eldoret_Facing_West_from_Mups_Plaza.jpg?width=1000',
+  'Kisumu': 'https://commons.wikimedia.org/wiki/Special:FilePath/Lake_Victoria_as_visible_from_Kisumu_City.jpg?width=1000',
+  'Mombasa': 'https://commons.wikimedia.org/wiki/Special:FilePath/Old_Town_Mombasa.jpg?width=1000',
+  'Malindi': 'https://commons.wikimedia.org/wiki/Special:FilePath/Tropical_hue_of_the_Malindi_beach.jpg?width=1000',
+  'Kitale': 'https://commons.wikimedia.org/wiki/Special:FilePath/Green_land_Kenya.jpg?width=1000',
+  'Homa Bay': 'https://commons.wikimedia.org/wiki/Special:FilePath/Homa_Bay_City_%282023%29.jpg?width=1000',
+  'Wajir': 'https://commons.wikimedia.org/wiki/Special:FilePath/Malaba_hill.jpg?width=1000',
+  'Maasai Mara': 'https://commons.wikimedia.org/wiki/Special:FilePath/Maasai_Mara_savanna_landscape%2C_Kenya.jpg?width=1000'
 };
 const DEMO_REVIEW_NAMES = new Set(['Mark Otieno','Kelvin Kiplangat','Brian Mwangi','Faith Wanjiku','Sharon Chebet','Daniel Kiplagat','Mercy Achieng','Kevin Mutua','Ann Njeri','Victor Omondi','Lucy Wambui','Samuel Kiptoo','Esther Jepkoech','Collins Maina','Diana Atieno']);
 function load(){
