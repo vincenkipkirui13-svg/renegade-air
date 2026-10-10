@@ -1919,3 +1919,40 @@ body:has(.site-header){padding-top:101px!important}
 @media(max-width:720px){
   body:has(.site-header){padding-top:87px!important}
 }
+
+
+/* Clear, accessible booking submission feedback. */
+#flight-booking .booking-status{
+  display:block;
+  margin:0;
+  padding:15px 16px;
+  border:1px solid #d7e2ee;
+  border-radius:12px;
+  background:#f3f7fb;
+  color:#344b63;
+  font-size:.88rem;
+  line-height:1.65;
+  font-weight:600;
+}
+#flight-booking .booking-status.is-pending{
+  border-color:#b8d9f8;
+  background:#eef7ff;
+  color:#124d82;
+}
+#flight-booking .booking-status.is-success{
+  border-color:#91d5ae;
+  background:#edfff3;
+  color:#145c32;
+}
+#flight-booking .booking-status.is-error{
+  border-color:#f0b1b1;
+  background:#fff1f1;
+  color:#922b2b;
+}
+#flight-booking .form-card button:disabled{
+  opacity:.72;
+  cursor:wait;
+}
+@media(max-width:720px){
+  #flight-booking .booking-status{font-size:.84rem;padding:13px}
+}
