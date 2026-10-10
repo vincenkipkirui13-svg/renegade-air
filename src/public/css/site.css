@@ -1866,3 +1866,38 @@ section#destinations .destination-cards > article.destination-photo-card{
 @media(prefers-reduced-motion:reduce){
   .brand-marquee-wide .brand-marquee-track{animation:none!important}
 }
+
+
+/* Dedicated booking section replaces the old inline booking block. */
+#flight-booking{
+  scroll-margin-top:135px!important;
+  padding:78px 0!important;
+  background:linear-gradient(135deg,#e8f5ff 0%,#f8fbff 48%,#e6f6ed 100%)!important;
+}
+#flight-booking .booking-intro{max-width:760px;margin:0 auto 30px;text-align:center}
+#flight-booking .booking-intro .eyebrow{display:inline-flex;padding:7px 12px;border:1px solid #cce4f7;border-radius:999px;background:#fff;color:#0b73e0;font-size:.68rem;letter-spacing:.14em}
+#flight-booking .booking-intro h2{margin:13px 0 12px;color:#071b3a;font-size:clamp(2rem,4.5vw,3.35rem);line-height:1.04;letter-spacing:-.05em}
+#flight-booking .booking-intro p{max-width:670px;margin:0 auto;color:#5c6f84;font-size:.94rem;line-height:1.75}
+#flight-booking .flight-booking-panel{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);gap:0;max-width:1020px;margin:auto;overflow:hidden;border:1px solid #d6e4ef;border-radius:25px;background:#fff;box-shadow:0 24px 65px rgba(7,27,58,.12)}
+#flight-booking .flight-booking-side{padding:30px 26px;background:linear-gradient(155deg,#071b3a,#0c3970 70%,#117ac4);color:#fff}
+#flight-booking .booking-step{display:inline-block;color:#a7e5ff;font-size:.66rem;font-weight:850;letter-spacing:.15em}
+#flight-booking .flight-booking-side h3{margin:12px 0 9px;font-size:1.7rem;line-height:1.1;letter-spacing:-.03em}
+#flight-booking .flight-booking-side>p{margin:0;color:#d4e6f7;font-size:.84rem;line-height:1.7}
+#flight-booking .contact-callout{display:flex;width:100%;margin:23px 0 18px;padding:15px;border:1px solid rgba(255,255,255,.22);border-radius:14px;background:rgba(255,255,255,.09);box-shadow:none}
+#flight-booking .contact-callout strong{color:#fff}
+#flight-booking .contact-callout span{color:#c9ddf0}
+#flight-booking .booking-assurance{display:flex;align-items:center;gap:9px;margin-top:12px;color:#e0eefb;font-size:.76rem}
+#flight-booking .booking-assurance>span:first-child{display:grid;place-items:center;width:21px;height:21px;flex:none;border-radius:50%;background:rgba(123,228,175,.18);color:#9af0bd;font-weight:900}
+#flight-booking .form-card{display:flex;flex-direction:column;gap:14px;padding:clamp(18px,3vw,30px);border:0;border-radius:0;background:#fff;box-shadow:none}
+#flight-booking .booking-form-heading{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;padding-bottom:13px;border-bottom:1px solid #eaf0f6}
+#flight-booking .booking-form-heading strong{color:#10233f;font-size:1rem}
+#flight-booking .booking-form-heading span{color:#75869a;font-size:.7rem}
+#flight-booking .form-card .form-grid{gap:13px;margin:0}
+#flight-booking .form-card label{gap:6px;color:#233b56;font-size:.77rem;font-weight:750}
+#flight-booking .form-card input,#flight-booking .form-card select,#flight-booking .form-card textarea{min-height:46px;border:1px solid #d6e1ed;border-radius:11px;background:#fbfdff;color:#132a45;padding:11px 12px;font-size:.85rem}
+#flight-booking .form-card textarea{min-height:100px}
+#flight-booking .form-card input:focus,#flight-booking .form-card select:focus,#flight-booking .form-card textarea:focus{border-color:#58a5ed;background:#fff;box-shadow:0 0 0 4px rgba(11,115,224,.09)}
+#flight-booking .form-card .btn{width:100%;min-height:50px;margin:0;border-radius:12px}
+#flight-booking .fine-print{margin:0;padding:10px 12px;border-radius:10px;background:#f3f7fb;color:#60758a;font-size:.72rem;line-height:1.5}
+@media(max-width:820px){#flight-booking .flight-booking-panel{grid-template-columns:1fr}#flight-booking .flight-booking-side{padding:22px}#flight-booking .contact-callout{max-width:350px}}
+@media(max-width:720px){#flight-booking{padding:48px 0!important;scroll-margin-top:115px!important}#flight-booking .booking-intro{margin-bottom:22px;text-align:left}#flight-booking .booking-intro h2{font-size:clamp(1.85rem,8vw,2.4rem)}#flight-booking .booking-intro p{font-size:.85rem}#flight-booking .flight-booking-panel{border-radius:18px}#flight-booking .flight-booking-side{padding:20px}#flight-booking .form-card{gap:12px;padding:16px}#flight-booking .form-card .form-grid.two{grid-template-columns:minmax(0,1fr)}#flight-booking .booking-form-heading{align-items:flex-start;flex-direction:column;gap:3px}}
