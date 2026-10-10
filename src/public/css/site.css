@@ -1901,3 +1901,21 @@ section#destinations .destination-cards > article.destination-photo-card{
 #flight-booking .fine-print{margin:0;padding:10px 12px;border-radius:10px;background:#f3f7fb;color:#60758a;font-size:.72rem;line-height:1.5}
 @media(max-width:820px){#flight-booking .flight-booking-panel{grid-template-columns:1fr}#flight-booking .flight-booking-side{padding:22px}#flight-booking .contact-callout{max-width:350px}}
 @media(max-width:720px){#flight-booking{padding:48px 0!important;scroll-margin-top:115px!important}#flight-booking .booking-intro{margin-bottom:22px;text-align:left}#flight-booking .booking-intro h2{font-size:clamp(1.85rem,8vw,2.4rem)}#flight-booking .booking-intro p{font-size:.85rem}#flight-booking .flight-booking-panel{border-radius:18px}#flight-booking .flight-booking-side{padding:20px}#flight-booking .form-card{gap:12px;padding:16px}#flight-booking .form-card .form-grid.two{grid-template-columns:minmax(0,1fr)}#flight-booking .booking-form-heading{align-items:flex-start;flex-direction:column;gap:3px}}
+
+
+/* Keep the complete public brand header and moving ticker pinned while page content scrolls. */
+body:has(.site-header){padding-top:101px!important}
+.site-header{
+  position:fixed!important;
+  inset:0 0 auto 0!important;
+  width:100%!important;
+  z-index:1000!important;
+}
+.site-header .nav-wrap{background:transparent}
+.brand-marquee-wide{
+  position:relative!important;
+  z-index:1!important;
+}
+@media(max-width:720px){
+  body:has(.site-header){padding-top:87px!important}
+}
