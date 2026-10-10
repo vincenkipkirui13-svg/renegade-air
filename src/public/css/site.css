@@ -1215,3 +1215,29 @@ img{
 
 /* Booking confidence section */
 .booking-help{background:linear-gradient(135deg,#f7fbff 0%,#eaf5ff 50%,#effaf2 100%)!important}.help-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.help-card{min-width:0;padding:24px;border:1px solid #d9e7f5;border-radius:18px;background:rgba(255,255,255,.94);box-shadow:0 12px 30px rgba(7,27,58,.055)}.help-number{display:grid;place-items:center;width:38px;height:38px;margin-bottom:18px;border-radius:12px;background:#e9f5ff;color:#126db8;font-weight:900;font-size:.82rem}.help-card h3{margin:0 0 9px;font-size:1.05rem;line-height:1.3;color:#0b2345}.help-card p{margin:0;color:#63748b;font-size:.86rem;line-height:1.75}.booking-help .section-head{margin-bottom:28px}@media(max-width:720px){.help-grid{grid-template-columns:minmax(0,1fr);gap:11px}.help-card{padding:18px}.help-number{margin-bottom:12px}.help-card h3{font-size:1rem}.help-card p{font-size:.82rem}}
+
+
+/* Destination photo cards: destination imagery is shown separately from the fare details. */
+.destination-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;align-items:stretch}
+.destination-photo-card{min-width:0;overflow:hidden;border:1px solid rgba(157,199,235,.72);border-radius:22px;background:#fff;box-shadow:0 14px 36px rgba(7,27,58,.10);transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+.destination-photo-card:hover{transform:translateY(-5px);box-shadow:0 22px 48px rgba(7,27,58,.16);border-color:#80bde9}
+.destination-photo-link{display:flex;flex-direction:column;height:100%;color:inherit;text-decoration:none}
+.destination-photo{height:190px;position:relative;overflow:hidden;background:linear-gradient(135deg,#d9efff,#e7f7e9)}
+.destination-photo:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(180deg,transparent,rgba(4,20,45,.42));pointer-events:none}
+.destination-photo img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .45s ease}
+.destination-photo-card:hover .destination-photo img{transform:scale(1.055)}
+.destination-photo-empty{height:100%;display:grid;place-items:center;color:#0b73e0;font-size:3rem}
+.destination-code{position:absolute;z-index:1;left:12px;bottom:12px;padding:5px 9px;border:1px solid rgba(255,255,255,.35);border-radius:8px;background:rgba(4,20,45,.72);color:#fff;font-size:.7rem;font-weight:900;letter-spacing:.1em;backdrop-filter:blur(8px)}
+.destination-photo-info{display:flex;flex:1;flex-direction:column;padding:17px 17px 15px}
+.destination-kicker{color:#0b73e0;font-size:.62rem;font-weight:900;letter-spacing:.17em}
+.destination-photo-info h3{margin:5px 0 6px;color:#071b3a;font-size:1.22rem;line-height:1.2;letter-spacing:-.025em}
+.destination-photo-info p{margin:0;color:#63748b;font-size:.78rem;line-height:1.55;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;min-height:3.65em}
+.destination-photo-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;padding-top:16px}
+.destination-photo-bottom>span:first-child{display:grid;gap:2px}
+.destination-photo-bottom small{font-size:.58rem;color:#63748b;font-weight:850;letter-spacing:.12em}
+.destination-photo-bottom strong{font-size:1.04rem;color:#071b3a;font-weight:950}
+.destination-photo-bottom .destination-arrow{flex:0 0 36px;width:36px;height:36px}
+@media(max-width:1050px){.destination-cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.destination-photo{height:180px}}
+@media(max-width:720px){.destination-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.destination-photo{height:145px}.destination-photo-info{padding:12px 12px 13px}.destination-photo-info h3{font-size:1.02rem}.destination-photo-info p{font-size:.72rem;min-height:4.3em}.destination-photo-bottom{padding-top:12px}.destination-photo-bottom strong{font-size:.9rem}.destination-photo-bottom small{font-size:.52rem}.destination-photo-bottom .destination-arrow{width:30px;height:30px;flex-basis:30px}.destination-photo-card{border-radius:16px}.destination-code{left:8px;bottom:8px;font-size:.62rem}}
+@media(max-width:360px){.destination-cards{grid-template-columns:1fr}.destination-photo{height:190px}}
+@media(prefers-reduced-motion:reduce){.destination-photo-card,.destination-photo img{transition:none}.destination-photo-card:hover,.destination-photo-card:hover .destination-photo img{transform:none}}
