@@ -1246,3 +1246,80 @@ img{
 .destination-photo-credit{margin-top:8px;font-size:.62rem;line-height:1.4;color:#748196}
 .destination-photo-credit a{color:#748196;text-decoration:underline;text-decoration-color:rgba(116,129,150,.45);text-underline-offset:2px}
 .destination-photo-credit a:hover{color:#0b73e0}
+
+
+/* Refined destination cards: compact aircraft photos, soft corners and restrained accents. */
+.destination-photo-card{
+  border:1px solid #e0e7ef!important;
+  border-radius:18px!important;
+  box-shadow:0 8px 24px rgba(11,35,69,.075)!important;
+  background:#fff!important;
+}
+.destination-photo-card:hover{
+  transform:translateY(-3px)!important;
+  border-color:#c7d5e4!important;
+  box-shadow:0 14px 30px rgba(11,35,69,.12)!important;
+}
+.destination-photo{
+  height:158px!important;
+  margin:8px 8px 0!important;
+  border-radius:13px!important;
+  background:#eaf0f6!important;
+  isolation:isolate!important;
+}
+.destination-photo:before{
+  content:""!important;
+  position:absolute!important;
+  z-index:1!important;
+  inset:0!important;
+  border:1px solid rgba(255,255,255,.55)!important;
+  border-radius:inherit!important;
+  pointer-events:none!important;
+}
+.destination-photo:after{
+  inset:48% 0 0!important;
+  background:linear-gradient(180deg,transparent,rgba(5,20,39,.48))!important;
+}
+.destination-photo img{
+  object-fit:cover!important;
+  object-position:center!important;
+}
+.destination-photo-card:hover .destination-photo img{transform:scale(1.025)!important}
+.destination-photo-info{padding:14px 16px 15px!important}
+.destination-photo-info h3{margin:0 0 7px!important;font-size:1.12rem!important;color:#10233f!important}
+.destination-photo-info p{color:#66758a!important}
+.destination-kicker{display:none!important}
+.destination-code{
+  left:10px!important;
+  bottom:10px!important;
+  padding:5px 8px!important;
+  border:1px solid rgba(255,255,255,.42)!important;
+  border-radius:7px!important;
+  background:rgba(9,27,49,.78)!important;
+  font-size:.64rem!important;
+  letter-spacing:.08em!important;
+}
+.destination-photo-bottom{padding-top:13px!important}
+.destination-photo-bottom strong{color:#10233f!important;font-size:1rem!important}
+.destination-photo-bottom small{color:#78869a!important;letter-spacing:.09em!important}
+.destination-photo-bottom .destination-arrow{
+  width:32px!important;height:32px!important;flex-basis:32px!important;
+  border:1px solid #e1e8f0!important;border-radius:10px!important;
+  background:#f7f9fc!important;color:#344a63!important;
+}
+.destination-photo-card:hover .destination-arrow{
+  background:#102b4c!important;color:#fff!important;border-color:#102b4c!important;
+}
+@media(max-width:1050px){.destination-photo{height:150px!important}}
+@media(max-width:720px){
+  .destination-cards{gap:12px!important}
+  .destination-photo{height:126px!important;margin:6px 6px 0!important;border-radius:11px!important}
+  .destination-photo-info{padding:12px 12px 13px!important}
+  .destination-photo-info h3{font-size:.98rem!important}
+  .destination-photo-info p{font-size:.71rem!important;min-height:4.1em!important}
+  .destination-photo-bottom{padding-top:10px!important}
+  .destination-photo-bottom strong{font-size:.86rem!important}
+  .destination-photo-bottom .destination-arrow{width:28px!important;height:28px!important;flex-basis:28px!important}
+  .destination-code{left:8px!important;bottom:8px!important;font-size:.59rem!important}
+}
+@media(max-width:360px){.destination-photo{height:160px!important}}
