@@ -1675,3 +1675,15 @@ section#destinations .destination-cards > article.destination-photo-card{
  #destinations .destination-photo-info{padding:9px!important}
  #destinations .destination-photo-info p{font-size:.66rem!important}
 }
+
+
+/* Refined moving brand message beneath the Renegade Air logo/name */
+.brand-copy{display:flex;flex-direction:column;align-items:flex-start;min-width:0;max-width:clamp(145px,22vw,265px);line-height:1.2}
+.brand-copy strong{white-space:nowrap}
+.brand-copy>small{margin-top:2px}
+.brand-marquee{display:block;width:100%;max-width:100%;overflow:hidden;margin-top:5px;white-space:nowrap;mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.brand-marquee-track{display:flex;width:max-content;animation:renegade-brand-scroll 25s linear infinite;will-change:transform}
+.brand-marquee-track>span{display:block;flex:0 0 auto;font-size:9px;font-weight:800;letter-spacing:.055em;color:#47627e}
+@keyframes renegade-brand-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.brand-marquee-track{animation:none}.brand-marquee{mask-image:none}.brand-marquee-track>span[aria-hidden=true]{display:none}}
+@media(max-width:720px){.brand-copy{max-width:min(48vw,210px)}.brand-marquee{margin-top:4px}.brand-marquee-track>span{font-size:8px}.nav-wrap{gap:10px}}
