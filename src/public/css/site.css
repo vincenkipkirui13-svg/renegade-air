@@ -1919,3 +1919,11 @@ body:has(.site-header){padding-top:101px!important}
 @media(max-width:720px){
   body:has(.site-header){padding-top:87px!important}
 }
+
+
+/* Reliable hero slideshow visibility; preserve the original hero dimensions. */
+.hero .hero-media{z-index:0!important;background:#0b2c5d!important}
+.hero .hero-slides{position:absolute!important;inset:0!important;overflow:hidden!important;background:#0b2c5d!important}
+.hero .hero-slides .hero-slide{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;object-fit:cover!important;object-position:center!important;opacity:0!important;visibility:hidden!important;z-index:0!important;transition:opacity .85s ease-in-out!important}
+.hero .hero-slides .hero-slide.is-active{opacity:1!important;visibility:visible!important;z-index:1!important}
+.hero .hero-slides:after{content:""!important;position:absolute!important;inset:0!important;z-index:2!important;pointer-events:none!important;background:linear-gradient(90deg,rgba(4,16,38,.72),rgba(4,16,38,.38) 48%,rgba(4,16,38,.12)),linear-gradient(180deg,rgba(4,16,38,.04),rgba(4,16,38,.22))!important}
