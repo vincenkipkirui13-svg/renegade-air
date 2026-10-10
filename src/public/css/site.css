@@ -1697,3 +1697,172 @@ section#destinations .destination-cards > article.destination-photo-card{
 .brand-marquee-wide .brand-marquee-track>span{display:block;flex:0 0 auto;padding-right:7vw;color:#47627e;font-size:11px;font-weight:500;letter-spacing:.085em;line-height:1.2}
 @media(max-width:720px){.brand-marquee-wide{height:22px}.brand-marquee-wide .brand-marquee-track>span{font-size:10px;letter-spacing:.07em}.nav-wrap{gap:10px}}
 @media(prefers-reduced-motion:reduce){.brand-marquee-wide .brand-marquee-track{animation:none}.brand-marquee-wide{mask-image:none}.brand-marquee-wide .brand-marquee-track>span[aria-hidden=true]{display:none}}
+
+
+/* Final polish: readable sticky brand ticker and an organized booking experience. */
+.site-header{
+  position:sticky!important;
+  top:0!important;
+  z-index:100!important;
+}
+.brand-marquee-wide{
+  height:29px!important;
+  min-height:29px!important;
+  position:relative!important;
+  z-index:2!important;
+  border-top:1px solid rgba(217,231,245,.8)!important;
+  border-bottom:1px solid rgba(217,231,245,.65)!important;
+  background:rgba(247,250,254,.96)!important;
+}
+.brand-marquee-wide .brand-marquee-track>span{
+  font-size:12px!important;
+  font-weight:600!important;
+  letter-spacing:.075em!important;
+  line-height:1.25!important;
+}
+@media(max-width:720px){
+  .brand-marquee-wide{height:27px!important;min-height:27px!important}
+  .brand-marquee-wide .brand-marquee-track>span{font-size:11px!important;letter-spacing:.055em!important}
+}
+
+/* Booking section: clear hierarchy, calm spacing, and a polished form panel. */
+#booking{
+  scroll-margin-top:130px!important;
+  padding:76px 0!important;
+  background:
+    radial-gradient(circle at 8% 8%,rgba(255,255,255,.95),transparent 30%),
+    linear-gradient(135deg,#eaf5ff 0%,#f4fbff 45%,#e8f7ef 100%)!important;
+}
+#booking .booking-layout{
+  display:grid!important;
+  grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr)!important;
+  gap:clamp(24px,4vw,52px)!important;
+  align-items:start!important;
+}
+#booking .booking-layout>div:first-child{
+  position:sticky!important;
+  top:150px!important;
+  padding:24px 0 0!important;
+}
+#booking .booking-layout .eyebrow{
+  padding:7px 11px!important;
+  border:1px solid #c9e5fa!important;
+  border-radius:999px!important;
+  background:#fff!important;
+  color:#0869bd!important;
+  font-size:.68rem!important;
+  letter-spacing:.13em!important;
+}
+#booking .booking-layout h2{
+  max-width:430px!important;
+  margin:9px 0 14px!important;
+  color:#0a2343!important;
+  font-size:clamp(2rem,4vw,3.2rem)!important;
+  line-height:1.04!important;
+  letter-spacing:-.05em!important;
+}
+#booking .booking-layout>div:first-child>p{
+  max-width:440px!important;
+  color:#5b6e84!important;
+  font-size:.96rem!important;
+  line-height:1.75!important;
+}
+#booking .contact-callout{
+  display:flex!important;
+  width:min(100%,330px)!important;
+  margin-top:25px!important;
+  padding:17px 19px!important;
+  border:1px solid #cce6d8!important;
+  border-radius:16px!important;
+  background:rgba(255,255,255,.88)!important;
+  box-shadow:0 10px 26px rgba(13,54,88,.07)!important;
+}
+#booking .form-card{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:15px!important;
+  padding:clamp(18px,3vw,30px)!important;
+  border:1px solid #d7e4f0!important;
+  border-radius:24px!important;
+  background:rgba(255,255,255,.97)!important;
+  box-shadow:0 22px 58px rgba(13,42,76,.12)!important;
+}
+#booking .form-card:before{
+  content:"TRAVEL DETAILS"!important;
+  display:block!important;
+  padding-bottom:13px!important;
+  border-bottom:1px solid #edf2f7!important;
+  color:#61758c!important;
+  font-size:.68rem!important;
+  font-weight:850!important;
+  letter-spacing:.16em!important;
+}
+#booking .form-card .form-grid{
+  gap:14px!important;
+  margin:0!important;
+}
+#booking .form-card label{
+  gap:7px!important;
+  color:#233b56!important;
+  font-size:.78rem!important;
+  font-weight:750!important;
+}
+#booking .form-card input,
+#booking .form-card select,
+#booking .form-card textarea{
+  min-height:47px!important;
+  border:1px solid #d6e1ed!important;
+  border-radius:11px!important;
+  background:#fbfdff!important;
+  color:#132a45!important;
+  padding:11px 12px!important;
+  font-size:.86rem!important;
+  transition:border-color .18s ease,box-shadow .18s ease,background .18s ease!important;
+}
+#booking .form-card textarea{min-height:105px!important}
+#booking .form-card input:focus,
+#booking .form-card select:focus,
+#booking .form-card textarea:focus{
+  border-color:#58a5ed!important;
+  background:#fff!important;
+  box-shadow:0 0 0 4px rgba(11,115,224,.09)!important;
+}
+#booking .form-card input[readonly]{
+  background:#f1f6fb!important;
+  color:#52677f!important;
+}
+#booking .form-card .btn{
+  min-height:52px!important;
+  margin:0!important;
+  border-radius:13px!important;
+  font-size:.91rem!important;
+  box-shadow:0 10px 22px rgba(255,201,74,.2)!important;
+}
+#booking .form-card .btn:disabled{opacity:.7!important;cursor:wait!important}
+#booking .fine-print{
+  margin:0!important;
+  padding:11px 12px!important;
+  border-radius:10px!important;
+  background:#f4f8fc!important;
+  color:#60758a!important;
+  line-height:1.5!important;
+}
+@media(max-width:980px){
+  #booking .booking-layout{grid-template-columns:minmax(0,1fr)!important;gap:20px!important}
+  #booking .booking-layout>div:first-child{position:static!important;padding:0!important}
+  #booking .booking-layout>div:first-child>p{max-width:680px!important}
+  #booking .contact-callout{margin-top:15px!important}
+}
+@media(max-width:720px){
+  #booking{padding:48px 0!important;scroll-margin-top:112px!important}
+  #booking .booking-layout{gap:17px!important}
+  #booking .booking-layout h2{font-size:clamp(1.8rem,8vw,2.4rem)!important}
+  #booking .booking-layout>div:first-child>p{font-size:.86rem!important;line-height:1.65!important}
+  #booking .form-card{gap:13px!important;padding:16px!important;border-radius:18px!important}
+  #booking .form-card .form-grid.two{grid-template-columns:minmax(0,1fr)!important;gap:12px!important}
+  #booking .form-card input,#booking .form-card select{min-height:45px!important}
+  #booking .form-card .btn{min-height:48px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .brand-marquee-wide .brand-marquee-track{animation:none!important}
+}
