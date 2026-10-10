@@ -1241,3 +1241,8 @@ img{
 @media(max-width:720px){.destination-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.destination-photo{height:145px}.destination-photo-info{padding:12px 12px 13px}.destination-photo-info h3{font-size:1.02rem}.destination-photo-info p{font-size:.72rem;min-height:4.3em}.destination-photo-bottom{padding-top:12px}.destination-photo-bottom strong{font-size:.9rem}.destination-photo-bottom small{font-size:.52rem}.destination-photo-bottom .destination-arrow{width:30px;height:30px;flex-basis:30px}.destination-photo-card{border-radius:16px}.destination-code{left:8px;bottom:8px;font-size:.62rem}}
 @media(max-width:360px){.destination-cards{grid-template-columns:1fr}.destination-photo{height:190px}}
 @media(prefers-reduced-motion:reduce){.destination-photo-card,.destination-photo img{transition:none}.destination-photo-card:hover,.destination-photo-card:hover .destination-photo img{transform:none}}
+
+
+.destination-photo-credit{margin-top:8px;font-size:.62rem;line-height:1.4;color:#748196}
+.destination-photo-credit a{color:#748196;text-decoration:underline;text-decoration-color:rgba(116,129,150,.45);text-underline-offset:2px}
+.destination-photo-credit a:hover{color:#0b73e0}
