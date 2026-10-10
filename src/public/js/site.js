@@ -7,3 +7,15 @@ const now=new Date();const localToday=new Date(now.getTime()-now.getTimezoneOffs
 if(depart){depart.min=localToday;depart.addEventListener('change',()=>{if(returnDate){returnDate.min=depart.value||localToday;if(returnDate.value&&returnDate.value<returnDate.min)returnDate.value=''}})}
 if(tripType&&returnDate){const syncTrip=()=>{const isReturn=tripType.value==='return';returnDate.disabled=!isReturn;returnDate.required=isReturn;if(!isReturn)returnDate.value=''};tripType.addEventListener('change',syncTrip);syncTrip()}
 const booking=document.querySelector('[data-booking]');if(booking){booking.addEventListener('submit',async e=>{e.preventDefault();const obj=Object.fromEntries(new FormData(booking).entries());const status=booking.querySelector('[data-book-status]');const submit=booking.querySelector('button[type="submit"]');status.textContent='Sending your request…';status.setAttribute('role','status');if(submit)submit.disabled=true;try{const r=await fetch('/booking',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(obj)});if(r.ok){booking.reset();if(depart)depart.min=localToday;if(returnDate){returnDate.disabled=true;returnDate.required=false;returnDate.min=localToday}status.textContent='Request received. Your booking is not confirmed until the team contacts you to confirm availability, schedule and fare.'}else{const message=await r.text();status.textContent=message||'Could not send the request. Please call or WhatsApp us.'}}catch(error){status.textContent='Connection issue. Please try again or call or WhatsApp the team.'}finally{if(submit)submit.disabled=false}})}
+
+/* Keep the hero frame still while its aircraft photographs cross-fade every two seconds. */
+const heroSlides=Array.from(document.querySelectorAll('.hero-slide'));
+if(heroSlides.length>1){
+  let activeHeroSlide=heroSlides.findIndex(slide=>slide.classList.contains('is-active'));
+  if(activeHeroSlide<0)activeHeroSlide=0;
+  window.setInterval(()=>{
+    heroSlides[activeHeroSlide].classList.remove('is-active');
+    activeHeroSlide=(activeHeroSlide+1)%heroSlides.length;
+    heroSlides[activeHeroSlide].classList.add('is-active');
+  },2000);
+}
