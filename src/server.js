@@ -5,7 +5,7 @@ const crypto = require('crypto');
 const url = require('url');
 
 const PORT = Number(process.env.PORT || 3000);
-const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(process.cwd(), 'data'));
+const DATA_DIR = path.resolve(process.env.DATA_DIR || (process.env.VERCEL ? path.join('/tmp', 'renegade-air-data') : path.join(process.cwd(), 'data')));
 const UPLOAD_DIR = path.join(DATA_DIR, 'uploads');
 const PUBLIC_DIR = path.join(__dirname, 'public');
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@renegadeair.local';
@@ -126,7 +126,7 @@ function decodeUpload(v){ if(!v)return ''; const m=String(v).match(/^data:(image
 function removeFile(ref){if(!ref||!ref.startsWith('/uploads/'))return;try{fs.unlinkSync(path.join(UPLOAD_DIR,path.basename(ref)))}catch{}}
 function mergeUpload(obj,key,old=''){if(!obj[key])return old;const next=decodeUpload(obj[key]);removeFile(old);return next;}
 
-const server=http.createServer(async(req,res)=>{
+const handler=async(req,res)=>{
   try{
     const p=url.parse(req.url,true).pathname;
     if(req.method==='GET' && p.startsWith('/uploads/')){const fp=path.join(UPLOAD_DIR,path.basename(p));if(fs.existsSync(fp)){const ext=path.extname(fp).toLowerCase();const types={'.jpg':'image/jpeg','.png':'image/png','.webp':'image/webp','.gif':'image/gif','.svg':'image/svg+xml'};return send(res,200,fs.readFileSync(fp),types[ext]||'application/octet-stream')}return send(res,404,'Not found')}
@@ -155,6 +155,10 @@ const server=http.createServer(async(req,res)=>{
     }
     return send(res,404,'Page not found','text/plain');
   }catch(err){console.error(err);return send(res,500,err.message||'Server error','text/plain');}
-});
+};
 
-server.listen(PORT,'0.0.0.0',()=>console.log(`RENEGADE AIR running on http://localhost:${PORT}`));
+if (process.env.VERCEL) {
+  module.exports = handler;
+} else {
+  http.createServer(handler).listen(PORT, '0.0.0.0', () => console.log(`RENEGADE AIR running on http://localhost:${PORT}`));
+}
