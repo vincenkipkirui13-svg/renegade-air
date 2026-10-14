@@ -128,7 +128,8 @@ function mergeUpload(obj,key,old=''){if(!obj[key])return old;const next=decodeUp
 
 const handler=async(req,res)=>{
   try{
-    const parsedUrl=url.parse(req.url,true);\n    const p=parsedUrl.query.__route || parsedUrl.pathname;
+    const parsedUrl=url.parse(req.url,true);
+    const p=parsedUrl.query.__route || parsedUrl.pathname;
     if(req.method==='GET' && p.startsWith('/uploads/')){const fp=path.join(UPLOAD_DIR,path.basename(p));if(fs.existsSync(fp)){const ext=path.extname(fp).toLowerCase();const types={'.jpg':'image/jpeg','.png':'image/png','.webp':'image/webp','.gif':'image/gif','.svg':'image/svg+xml'};return send(res,200,fs.readFileSync(fp),types[ext]||'application/octet-stream')}return send(res,404,'Not found')}
     if(req.method==='GET' && staticFile(res,p)) return;
     if(req.method==='GET' && p==='/health') return send(res,200,JSON.stringify({ok:true,service:'renegade-air'}),'application/json');
