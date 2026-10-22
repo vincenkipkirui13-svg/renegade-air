@@ -4,6 +4,7 @@ const path = require('path');
 const crypto = require('crypto');
 const url = require('url');
 const { Pool } = require('pg');
+const { put, list, get } = require('@vercel/blob');
 
 const PORT = Number(process.env.PORT || 3000);
 const DATA_DIR = path.resolve(process.env.DATA_DIR || (process.env.VERCEL ? path.join('/tmp', 'renegade-air-data') : path.join(process.cwd(), 'data')));
@@ -14,9 +15,59 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'ChangeMe123!';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'replace-this-session-secret-before-production';
 const bookingPool = process.env.DATABASE_URL ? new Pool({connectionString:process.env.DATABASE_URL,ssl:process.env.DATABASE_SSL==='disable'?false:{rejectUnauthorized:false},max:3}) : null;
 const bookingTableReady = bookingPool ? bookingPool.query(`CREATE TABLE IF NOT EXISTS renegade_air_bookings (id BIGINT PRIMARY KEY, payload JSONB NOT NULL, created_at TIMESTAMPTZ NOT NULL DEFAULT NOW())`) : Promise.resolve();
-async function persistBooking(item){if(!bookingPool){if(process.env.VERCEL){const err=new Error('Online booking is temporarily unavailable. Please contact Renegade Air by phone or WhatsApp.');err.statusCode=503;throw err;}data.inquiries.push(item);save();return;}await bookingTableReady;await bookingPool.query('INSERT INTO renegade_air_bookings (id,payload,created_at) VALUES ($1,$2::jsonb,$3)',[item.id,JSON.stringify(item),item.createdAt]);data.inquiries.push(item);}
-async function refreshBookings(){if(!bookingPool)return;await bookingTableReady;const result=await bookingPool.query("SELECT payload FROM renegade_air_bookings ORDER BY created_at DESC");data.inquiries=result.rows.map(r=>r.payload);}
-async function updateBookingStatus(id,status){if(bookingPool){await bookingTableReady;const r=await bookingPool.query("UPDATE renegade_air_bookings SET payload=jsonb_set(payload,'{status}',to_jsonb($2::text)) WHERE id=$1 RETURNING payload",[id,status]);if(!r.rowCount)return false;const item=data.inquiries.find(x=>Number(x.id)===id);if(item)item.status=status;return true;}const item=data.inquiries.find(x=>Number(x.id)===id);if(!item)return false;item.status=status;save();return true;}
+const BLOB_BOOKING_PREFIX = 'renegade-air/bookings/';
+async function readPrivateBlob(pathname) {
+  const file = await get(pathname, { access: 'private', useCache: false });
+  if (!file || file.statusCode !== 200) return null;
+  return JSON.parse(await new Response(file.stream).text());
+}
+async function persistBooking(item) {
+  if (bookingPool) {
+    await bookingTableReady;
+    await bookingPool.query('INSERT INTO renegade_air_bookings (id,payload,created_at) VALUES ($1,$2::jsonb,$3)',[item.id,JSON.stringify(item),item.createdAt]);
+  } else if (process.env.VERCEL && process.env.BLOB_READ_WRITE_TOKEN) {
+    await put(`${BLOB_BOOKING_PREFIX}${item.id}.json`, JSON.stringify(item), { access: 'private', addRandomSuffix: false, allowOverwrite: true, contentType: 'application/json' });
+  } else if (process.env.VERCEL) {
+    const err = new Error('Online booking is temporarily unavailable. Please contact Renegade Air by phone or WhatsApp.');
+    err.statusCode = 503; throw err;
+  } else {
+    data.inquiries.push(item); save(); return;
+  }
+  data.inquiries.push(item);
+}
+async function refreshBookings() {
+  if (bookingPool) {
+    await bookingTableReady;
+    const result = await bookingPool.query("SELECT payload FROM renegade_air_bookings ORDER BY created_at DESC");
+    data.inquiries = result.rows.map(r => r.payload);
+    return;
+  }
+  if (process.env.VERCEL && process.env.BLOB_READ_WRITE_TOKEN) {
+    const result = await list({ prefix: BLOB_BOOKING_PREFIX, access: 'private' });
+    const items = await Promise.all(result.blobs.map(b => readPrivateBlob(b.pathname).catch(err => { console.error('Unable to read stored booking', err.message); return null; })));
+    data.inquiries = items.filter(Boolean).sort((a,b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+  }
+}
+async function updateBookingStatus(id,status) {
+  if (bookingPool) {
+    await bookingTableReady;
+    const r = await bookingPool.query("UPDATE renegade_air_bookings SET payload=jsonb_set(payload,'{status}',to_jsonb($2::text)) WHERE id=$1 RETURNING payload",[id,status]);
+    if (!r.rowCount) return false;
+    const item=data.inquiries.find(x=>Number(x.id)===id); if(item)item.status=status;
+    return true;
+  }
+  if (process.env.VERCEL && process.env.BLOB_READ_WRITE_TOKEN) {
+    const pathname = `${BLOB_BOOKING_PREFIX}${id}.json`;
+    const item = await readPrivateBlob(pathname);
+    if (!item) return false;
+    item.status = status;
+    await put(pathname, JSON.stringify(item), { access: 'private', addRandomSuffix: false, allowOverwrite: true, contentType: 'application/json' });
+    const cached=data.inquiries.find(x=>Number(x.id)===id); if(cached)cached.status=status;
+    return true;
+  }
+  const item=data.inquiries.find(x=>Number(x.id)===id); if(!item)return false;
+  item.status=status; save(); return true;
+}
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });
 
 const DB_FILE = path.join(DATA_DIR, 'site-data.json');
