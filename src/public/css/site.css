@@ -1957,3 +1957,40 @@ body:has(.site-header){padding-top:101px!important}
 @media(max-width:720px){
   #flight-booking .booking-status{font-size:.84rem;padding:13px}
 }
+
+
+/* Desktop layout refinement — clearer hierarchy, consistent spacing and aligned grids */
+@media (min-width: 1101px) {
+  .container { width: min(1280px, calc(100% - 80px)); }
+  .hero { min-height: 640px; }
+  .hero-content { width: min(1280px, calc(100% - 80px)); }
+  .hero-copy { max-width: 700px; }
+  .hero-copy h1 { max-width: 12ch; font-size: clamp(3.25rem, 4.4vw, 5rem); line-height: 1.02; letter-spacing: -.045em; }
+  .hero-copy p { max-width: 58ch; font-size: 1.08rem; line-height: 1.75; }
+  .section { padding-top: 88px; padding-bottom: 88px; }
+  .section-head { align-items: end; gap: 48px; }
+  .section-head > p { max-width: 460px; }
+  .gallery-grid, .fleet-grid, .reviews-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  .gallery-card, .fleet-card, .review-card { min-width: 0; }
+  .gallery-card img { width: 100%; }
+  .booking-layout { grid-template-columns: minmax(0, 1.05fr) minmax(420px, .95fr); gap: 38px; align-items: start; }
+  .about-grid { grid-template-columns: minmax(0, 1fr) minmax(0, .9fr); gap: 64px; align-items: center; }
+  .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; gap: 56px; }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .container, .hero-content { width: min(100% - 48px, 1040px); }
+  .hero { min-height: 590px; }
+  .hero-copy { max-width: 620px; }
+  .gallery-grid, .fleet-grid, .reviews-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .booking-layout { grid-template-columns: minmax(0, 1fr) minmax(340px, .9fr); gap: 22px; }
+}
+@media (min-width: 761px) {
+  .site-header .nav-wrap { min-height: 78px; }
+  .main-nav { gap: clamp(16px, 1.7vw, 28px); }
+  .main-nav a { white-space: nowrap; }
+  .section-head h2 { max-width: 18ch; }
+  .panel, .form-card, .booking-info-card { min-width: 0; }
+  .destination-list { gap: 14px; }
+  .destination-row { min-width: 0; }
+  .footer-grid > * { min-width: 0; }
+}
