@@ -14,7 +14,7 @@ const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'ChangeMe123!';
 const SESSION_SECRET = process.env.SESSION_SECRET || 'replace-this-session-secret-before-production';
 const bookingPool = process.env.DATABASE_URL ? new Pool({connectionString:process.env.DATABASE_URL,ssl:process.env.DATABASE_SSL==='disable'?false:{rejectUnauthorized:false},max:3}) : null;
 const bookingTableReady = bookingPool ? bookingPool.query(`CREATE TABLE IF NOT EXISTS renegade_air_bookings (id BIGINT PRIMARY KEY, payload JSONB NOT NULL, created_at TIMESTAMPTZ NOT NULL DEFAULT NOW())`) : Promise.resolve();
-async function persistBooking(item){if(!bookingPool){if(process.env.VERCEL)throw new Error('Booking storage is not configured. Please contact the site administrator.');data.inquiries.push(item);save();return;}await bookingTableReady;await bookingPool.query('INSERT INTO renegade_air_bookings (id,payload,created_at) VALUES ($1,$2::jsonb,$3)',[item.id,JSON.stringify(item),item.createdAt]);data.inquiries.push(item);}
+async function persistBooking(item){if(!bookingPool){if(process.env.VERCEL){const err=new Error('Online booking is temporarily unavailable. Please contact Renegade Air by phone or WhatsApp.');err.statusCode=503;throw err;}data.inquiries.push(item);save();return;}await bookingTableReady;await bookingPool.query('INSERT INTO renegade_air_bookings (id,payload,created_at) VALUES ($1,$2::jsonb,$3)',[item.id,JSON.stringify(item),item.createdAt]);data.inquiries.push(item);}
 async function refreshBookings(){if(!bookingPool)return;await bookingTableReady;const result=await bookingPool.query("SELECT payload FROM renegade_air_bookings ORDER BY created_at DESC");data.inquiries=result.rows.map(r=>r.payload);}
 async function updateBookingStatus(id,status){if(bookingPool){await bookingTableReady;const r=await bookingPool.query("UPDATE renegade_air_bookings SET payload=jsonb_set(payload,'{status}',to_jsonb($2::text)) WHERE id=$1 RETURNING payload",[id,status]);if(!r.rowCount)return false;const item=data.inquiries.find(x=>Number(x.id)===id);if(item)item.status=status;return true;}const item=data.inquiries.find(x=>Number(x.id)===id);if(!item)return false;item.status=status;save();return true;}
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });
@@ -161,7 +161,7 @@ const handler=async(req,res)=>{
       const im=p.match(/^\/admin\/inquiries\/(\d+)$/);if(im&&req.method==='POST'){const b=await body(req);if(!['New','Contacted','Confirmed','Completed','Cancelled'].includes(b.status))return send(res,400,'Invalid booking status');const ok=await updateBookingStatus(Number(im[1]),b.status);if(!ok)return send(res,404,'Not found');return send(res,200,JSON.stringify({ok:true}),'application/json');}
     }
     return send(res,404,'Page not found','text/plain');
-  }catch(err){console.error(err);return send(res,500,err.message||'Server error','text/plain');}
+  }catch(err){console.error(err);return send(res,err.statusCode||500,err.message||'Server error','text/plain');}
 };
 
 if (process.env.VERCEL) {
