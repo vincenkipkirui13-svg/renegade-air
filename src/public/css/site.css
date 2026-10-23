@@ -1994,3 +1994,24 @@ body:has(.site-header){padding-top:101px!important}
   .destination-row { min-width: 0; }
   .footer-grid > * { min-width: 0; }
 }
+
+
+/* Responsive seat picker for Renegade Air booking */
+.seat-picker{margin:22px 0;padding:20px 18px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.76);box-shadow:var(--shadow2)}
+.seat-picker-note{margin:8px 0;color:var(--muted);font-size:12px;line-height:1.65}
+.seat-legend{display:flex;flex-wrap:wrap;gap:14px;margin:18px 0;color:var(--muted);font-size:11px;font-weight:700}
+.seat-legend span{display:inline-flex;align-items:center;gap:7px}
+.seat-legend i{display:inline-block;width:16px;height:16px;border:1px solid #d9e7f5;border-radius:5px;background:#fff}
+.seat-legend .seat-legend-selected{background:#28a9eb;border-color:#28a9eb}
+.seat-legend .seat-legend-held{background:#e8eef3;border-color:#e8eef3}
+.seat-layout{display:grid;gap:8px;max-width:490px;margin:0 auto}
+.seat-row{display:grid;grid-template-columns:minmax(24px,1fr) repeat(4,minmax(0,66px));gap:9px;align-items:center}
+.seat-row-number{color:var(--muted);font-size:11px;font-weight:800;text-align:center}
+.seat-button{height:46px;min-width:0;border:1px solid #d5e1ec;border-radius:9px;background:#fff;color:var(--navy);font:800 12px/1 inherit;cursor:pointer;transition:background .15s,border-color .15s}
+.seat-button.aisle-start{margin-left:20px}
+.seat-button:not(:disabled):hover{border-color:#28a9eb}
+.seat-button.is-selected{background:#28a9eb;border-color:#28a9eb;color:#fff}
+.seat-button.is-held{background:#e8eef3;border-color:#e8eef3;color:#8291a0;cursor:not-allowed}
+.seat-button:disabled:not(.is-held){opacity:.45;cursor:not-allowed}
+.seat-selected-summary{margin-top:20px;color:var(--navy);font-size:12px;font-weight:800}
+@media(max-width:600px){.seat-picker{padding:17px 11px;margin:18px 0}.seat-legend{gap:10px;font-size:10px}.seat-layout{gap:7px}.seat-row{grid-template-columns:minmax(20px,1fr) repeat(4,minmax(0,1fr));gap:6px}.seat-button{height:42px;font-size:11px;border-radius:8px}.seat-button.aisle-start{margin-left:12px}}
