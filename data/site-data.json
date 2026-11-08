@@ -69,6 +69,30 @@
       "fare": 10000,
       "active": true,
       "sort": 6
+    },
+    {
+      "id": 1789547643125,
+      "name": "Diani",
+      "fare": 8500,
+      "description": "Discover the white-sand beaches and clear waters of Kenya’s south coast.",
+      "active": true,
+      "sort": 7
+    },
+    {
+      "id": 1789547643126,
+      "name": "Malindi",
+      "fare": 7500,
+      "description": "Enjoy a relaxed coastal escape with beaches and Swahili heritage.",
+      "active": true,
+      "sort": 8
+    },
+    {
+      "id": 1789547643127,
+      "name": "Lodwar",
+      "fare": 11500,
+      "description": "Travel to Turkana County and explore the landscapes around Lake Turkana.",
+      "active": true,
+      "sort": 9
     }
   ],
   "gallery": [
