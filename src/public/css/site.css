@@ -2019,3 +2019,8 @@ body:has(.site-header){padding-top:101px!important}
 .seat-button:disabled:not(.is-held){opacity:.45;cursor:not-allowed}
 .seat-selected-summary{margin-top:18px;color:var(--navy);font-size:12px;font-weight:800;text-align:center}
 @media(max-width:600px){.seat-picker{padding:17px 10px;margin:18px 0}.seat-legend{gap:9px;font-size:10px}.seat-layout{gap:7px;padding:10px 5px}.seat-row{grid-template-columns:18px minmax(0,1fr) minmax(0,1fr) 12px minmax(0,1fr) minmax(0,1fr);gap:5px}.seat-button{height:36px;font-size:10px;border-radius:7px}.seat-row-number{font-size:10px}}
+
+/* Seat selection interaction hardening */
+.seat-layout{position:relative;z-index:3;pointer-events:auto;touch-action:pan-y}
+.seat-button{position:relative;z-index:4;pointer-events:auto;touch-action:manipulation;-webkit-tap-highlight-color:rgba(40,169,235,.25)}
+.seat-button:disabled:not(.is-selected){opacity:.38}
