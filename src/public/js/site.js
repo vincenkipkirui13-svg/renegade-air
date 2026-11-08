@@ -16,17 +16,27 @@ if(seatPicker){
  const passengerCount=()=>Math.max(1,Math.min(9,Number(passengerInput&&passengerInput.value)||1));
  const drawSeats=()=>{
   const count=passengerCount();
-  seatPicker.innerHTML='';
+  seatPicker.replaceChildren();
   for(let row=1;row<=12;row++){
    const rowEl=document.createElement('div');rowEl.className='seat-row';
    const num=document.createElement('span');num.className='seat-row-number';num.textContent=String(row);rowEl.appendChild(num);
    ['A','B','C','D'].forEach(letter=>{
     const seat=row+letter;const chosen=selectedSeats.includes(seat);
-    const button=document.createElement('button');button.type='button';
-    button.className='seat-button'+(chosen?' is-selected':'')+(letter==='C'?' aisle-start':'');
-    button.textContent=seat;button.dataset.seat=seat;button.disabled=!chosen&&selectedSeats.length>=count;
+    const button=document.createElement('button');
+    button.type='button';button.className='seat-button'+(chosen?' is-selected':'')+(letter==='C'?' aisle-start':'');
+    button.textContent=seat;button.dataset.seat=seat;
+    button.disabled=!chosen&&selectedSeats.length>=count;
     button.setAttribute('aria-pressed',String(chosen));
     button.setAttribute('aria-label','Seat '+seat+(chosen?', selected':', available'));
+    // Use the native click event only. Mobile browsers synthesize click from a tap;
+    // handling touchend as well would toggle twice and immediately undo the selection.
+    button.addEventListener('click',event=>{
+     event.preventDefault();
+     const index=selectedSeats.indexOf(seat);
+     if(index>=0) selectedSeats.splice(index,1);
+     else if(selectedSeats.length<count) selectedSeats.push(seat);
+     drawSeats();
+    });
     rowEl.appendChild(button);
    });
    seatPicker.appendChild(rowEl);
@@ -34,20 +44,6 @@ if(seatPicker){
   if(seatSummary)seatSummary.textContent='Selected: '+(selectedSeats.length?selectedSeats.join(', '):'none yet')+' ('+selectedSeats.length+' of '+count+')';
   if(seatValue)seatValue.value=selectedSeats.join(', ');
  };
- // Delegated touch/click handling remains attached even when the seat grid is redrawn.
- const toggleSeat=e=>{
-  const button=e.target.closest('button[data-seat]');
-  if(!button||!seatPicker.contains(button)||button.disabled)return;
-  e.preventDefault();
-  const seat=button.dataset.seat;
-  selectedSeats=selectedSeats.includes(seat)?selectedSeats.filter(s=>s!==seat):[...selectedSeats,seat];
-  drawSeats();
- };
- seatPicker.addEventListener('click',toggleSeat);
- seatPicker.addEventListener('touchend',e=>{
-  const button=e.target.closest('button[data-seat]');
-  if(button&&!button.disabled){e.preventDefault();toggleSeat({target:button,preventDefault(){}});}
- },{passive:false});
  if(passengerInput)passengerInput.addEventListener('input',()=>{
   selectedSeats=selectedSeats.slice(0,passengerCount());drawSeats();
  });
